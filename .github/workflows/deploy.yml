@@ -24,16 +24,15 @@ jobs:
           chmod +x Godot_v4.5-stable_linux.x86_64
           cd ..
       
-      - name: Create export templates directory
+      - name: Download and setup export templates
         run: |
-          mkdir -p ~/.local/share/godot/export_templates/4.5.stable
-      
-      - name: Download export templates
-        run: |
-          cd ~/.local/share/godot/export_templates/4.5.stable
+          mkdir -p ~/.local/share/godot/export_templates
+          cd ~/.local/share/godot/export_templates
           wget --tries=3 --timeout=10 https://github.com/godotengine/godot-builds/releases/download/4.5-stable/Godot_v4.5-stable_export_templates.tpz || \
           wget --tries=3 --timeout=10 https://downloads.tuxfamily.org/godotengine/4.5/Godot_v4.5-stable_export_templates.tpz
-          unzip Godot_v4.5-stable_export_templates.tpz
+          unzip -q Godot_v4.5-stable_export_templates.tpz
+          mv templates/* 4.5.stable/ 2>/dev/null || mv templates 4.5.stable
+          rm -rf templates Godot_v4.5-stable_export_templates.tpz
       
       - name: Create export preset
         run: |
