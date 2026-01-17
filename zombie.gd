@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var walk_speed: float =  90  # pixels per second
 
 # derive from the original game which set jump_speed to 15 pixels per frame @ 60 frames per second
-@export var jump_speed: float = -960 # pixels per second
+@export var jump_speed: float = -900 # pixels per second
 
 # derived from the original game which set knockback to   3 pixels per frame @ 60 frames per second
 # derived from the original game which set knockback to -10 pixels per frame @ 60 frames per second
@@ -26,7 +26,7 @@ var current_health = 2
 var facing: int = 1
 
 var maximum_jumps = 1
-var current_jumps = 1
+var current_jumps = 0
 
 func _ready() -> void:
   hurt.body_entered.connect(_on_hurt_entered)
