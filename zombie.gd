@@ -18,6 +18,8 @@ extends CharacterBody2D
 @onready var down_right = $DownRight
 @onready var right      = $Right
 
+@onready var hurt = $Hurt
+
 
 var maximum_health = 2
 var current_health = 2
@@ -25,6 +27,15 @@ var facing: int = 1
 
 var maximum_jumps = 1
 var current_jumps = 1
+
+func _ready() -> void:
+  hurt.body_entered.connect(_on_hurt_entered)
+
+func _on_hurt_entered(to: Node) -> void:
+  if is_queued_for_deletion():
+    return
+
+  ZombieDamageReceiver.try_receive_zombie_damage(to, self, .5)
 
 func _physics_process(delta: float) -> void:
   var nearest = get_nearest_jimmy()

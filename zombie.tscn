@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdl83l07xpt4r"]
+[gd_scene load_steps=6 format=3 uid="uid://cdl83l07xpt4r"]
 
 [ext_resource type="Script" uid="uid://dgtqk1kb08abp" path="res://zombie.gd" id="1_roy8y"]
 [ext_resource type="SpriteFrames" uid="uid://brif6rl8w15yo" path="res://zombie-frames.tres" id="1_uiaus"]
@@ -8,6 +8,9 @@ size = Vector2(62, 62)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmu02"]
 radius = 320.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmu02"]
+size = Vector2(66, 66)
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 3
@@ -38,3 +41,8 @@ target_position = Vector2(16, 48)
 
 [node name="Right" type="RayCast2D" parent="."]
 target_position = Vector2(48, 0)
+
+[node name="Hurt" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
+shape = SubResource("RectangleShape2D_jmu02")

@@ -23,10 +23,14 @@ extends CharacterBody2D
 var facing: int = 1 # 1 = right, -1 = left
 
 var falling_damage_tick = 0
+var      knockback_tick = 0
 
 func _process(delta: float) -> void:
   if falling_damage_tick > 0:
     falling_damage_tick -= delta
+
+  if knockback_tick > 0:
+    knockback_tick -= delta
 
   
   if velocity.y >= 6000 and falling_damage_tick <= 0:
@@ -41,7 +45,8 @@ func _physics_process(delta: float) -> void:
     "move_right"
   )
 
-  velocity.x  = dx * walk_speed
+  if knockback_tick <= 0:
+    velocity.x  = dx * walk_speed
   velocity.y += get_gravity().y * delta
 
   if velocity.x != 0:
@@ -106,3 +111,19 @@ func _receive_extra_heart() -> void:
 func _receive_extra_jump() -> void:
   jumps.maximum_jumps += 1
   jumps.current_jumps += 1
+
+func _receive_zombie_damage(from: Node2D, amount: float) -> void:
+  if knockback_tick > 0:
+    return
+
+  health.current_health -= amount
+  if health.current_health <= 0:
+    World.load_this_level()
+  knockback_tick = .167
+
+  if from.position.x < position.x:
+    velocity.x =  180
+  else:
+    velocity.x = -180
+
+  velocity.y = -600
