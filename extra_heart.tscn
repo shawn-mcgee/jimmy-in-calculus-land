@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b05lfuhc5xjpt"]
+
+[ext_resource type="Script" uid="uid://0a7x7f35hgab" path="res://extra_heart.gd" id="1_frxtu"]
+[ext_resource type="Texture2D" uid="uid://7jgin35x3u5b" path="res://png/Limit.png" id="2_frxtu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtstn"]
+size = Vector2(64, 64)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_frxtu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_frxtu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dtstn")

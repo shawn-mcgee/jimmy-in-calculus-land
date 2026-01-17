@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdl83l07xpt4r"]
+
+[ext_resource type="Script" uid="uid://dgtqk1kb08abp" path="res://zombie.gd" id="1_roy8y"]
+[ext_resource type="SpriteFrames" uid="uid://brif6rl8w15yo" path="res://zombie-frames.tres" id="1_uiaus"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roy8y"]
+size = Vector2(62, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmu02"]
+radius = 320.0
+
+[node name="Zombie" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_roy8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_roy8y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_uiaus")
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="Detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect"]
+shape = SubResource("CircleShape2D_jmu02")
+
+[node name="Left" type="RayCast2D" parent="."]
+target_position = Vector2(-48, 0)
+
+[node name="DownLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-16, 48)
+
+[node name="DownRight" type="RayCast2D" parent="."]
+target_position = Vector2(16, 48)
+
+[node name="Right" type="RayCast2D" parent="."]
+target_position = Vector2(48, 0)

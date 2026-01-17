@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbowb8tc0iyxi"]
+
+[ext_resource type="Script" uid="uid://1cea4al46c5s" path="res://jimmy.gd" id="1_c7k26"]
+[ext_resource type="PackedScene" uid="uid://bed8k1e8wohhe" path="res://apple.tscn" id="2_2hnql"]
+[ext_resource type="SpriteFrames" uid="uid://bgosh1j1cr0hs" path="res://jimmy-frames.tres" id="3_6j71x"]
+[ext_resource type="PackedScene" uid="uid://b2jyla5uselbs" path="res://health.tscn" id="4_1vi46"]
+[ext_resource type="PackedScene" uid="uid://n016xep80t22" path="res://jumps.tscn" id="5_ovo8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlwt5"]
+size = Vector2(62, 62)
+
+[node name="Jimmy" type="CharacterBody2D"]
+script = ExtResource("1_c7k26")
+Apple = ExtResource("2_2hnql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tlwt5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_6j71x")
+animation = &"idle_right"
+autoplay = "idle_right"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Health" parent="." instance=ExtResource("4_1vi46")]
+position = Vector2(0, -48)
+
+[node name="Jumps" parent="." instance=ExtResource("5_ovo8t")]
+position = Vector2(0, 40)
