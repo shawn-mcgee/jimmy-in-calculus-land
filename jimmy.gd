@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var walk_speed: float =  240; # pixels per second
 
 # derived from the original game which set jump_speed to 15 pixels per frame @ 60 frames per second
-@export var jump_speed: float = -900; # pixels per second
+@export var jump_speed: float = -960; # pixels per second
 
 # derived from the original game which set throw_speed to 20 pixels per frame @ 60 frames per second
 @export var throw_speed: float = 1200; # pixels per second

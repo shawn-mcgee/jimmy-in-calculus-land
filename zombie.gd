@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var walk_speed: float =  90  # pixels per second
 
 # derive from the original game which set jump_speed to 15 pixels per frame @ 60 frames per second
-@export var jump_speed: float = -900 # pixels per second
+@export var jump_speed: float = -960 # pixels per second
 
 # derived from the original game which set knockback to   3 pixels per frame @ 60 frames per second
 # derived from the original game which set knockback to -10 pixels per frame @ 60 frames per second
@@ -41,9 +41,9 @@ func _physics_process(delta: float) -> void:
   var nearest = get_nearest_jimmy()
 
   if nearest:
-    if   nearest.position.x > position.x:
+    if   nearest.position.x > position.x + 16:
       velocity.x =  walk_speed
-    elif nearest.position.x < position.x:
+    elif nearest.position.x < position.x - 16:
       velocity.x = -walk_speed
     else:
       velocity.x = 0
