@@ -36,7 +36,7 @@ jobs:
       
       - name: Create export preset
         run: |
-          mkdir -p export_presets_backup
+          mkdir -p build
           cat > export_presets.cfg << 'EOF'
           [preset.0]
           name="Web"
