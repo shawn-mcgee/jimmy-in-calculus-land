@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=4 uid="uid://cq86w81pk5h0v"]
+[gd_scene load_steps=5 format=3 uid="uid://cq86w81pk5h0v"]
 
-[ext_resource type="TileSet" uid="uid://cxg8qpqnj5qk5" path="res://tiles.tres" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://ch730ski2817q" path="res://png/Clouds.png" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://hhefefhv1cq" path="res://world.gd" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://bi10fvyooeaaf" path="res://levels/tutorial.tscn" id="2_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://csv5nh0o0m66s" path="res://levels/level-01.tscn" id="3_aqk2v"]
 
 [node name="World" type="Node2D"]
-
-[node name="Tiles" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD//wEABAAAAAAAAAAAAAEABAAAAAAAAAABAAEABAAAAAAAAAD+/wEABAAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAABAAAAAgAAAAAAAAD+/wMACgAAAAAAAAD//wMACgAAAAAAAAABAAMACgAAAAAAAAADAAEABAAAAAAAAAAEAAEABAAAAAAAAAAIAAEABAAAAAAAAAAJAAEABAAAAAAAAAAFAAEABAAAAAAAAAAKAAEABAAAAAAAAAAOAAEABAAAAAAAAAAPAAEABAAAAAAAAAAQAAEABAAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAIAAIAAQAAAAAAAAAJAAIAAQAAAAAAAAAKAAIAAQAAAAAAAAAOAAIAAQAAAAAAAAAPAAIAAQAAAAAAAAAQAAIAAQAAAAAAAAAEAAAAAAAAAAAABQAJAAAAAgAAAAAAAAAPAAAAAgAAAAAAAAAIAAAACQAAAAAAAAAOAAAACQAAAAAAAAAEAAMACgAAAAAAAAAIAAMACgAAAAAAAAAOAAMACgAAAAAAAAAPAAMACgAAAAAAAAAVAAEABAAAAAAAAAAVAAIAAQAAAAAAAAAWAAEABAAAAAAAAAAXAAEABAAAAAAAAAAWAAIAAQAAAAAAAAAXAAIAAQAAAAAAAAAVAAAAAgAAAAAAAAAXAAAACQAAAAAAAAAVAAMACgAAAAAAAAAXAAMACgAAAAAAAAD+/wAAAAAAAAAABgASAP//AAAAAAAAAwA=")
-tile_set = ExtResource("1_f3sb7")
+script = ExtResource("1_tlwt5")
+playlist = Array[PackedScene]([ExtResource("2_aqk2v"), ExtResource("3_aqk2v")])
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = -1000

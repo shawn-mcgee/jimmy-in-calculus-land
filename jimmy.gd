@@ -20,7 +20,20 @@ extends CharacterBody2D
 @onready var health = $Health
 @onready var jumps  = $Jumps
 
-var facing: int = 1
+var facing: int = 1 # 1 = right, -1 = left
+
+var falling_damage_tick = 0
+
+func _process(delta: float) -> void:
+  if falling_damage_tick > 0:
+    falling_damage_tick -= delta
+
+  
+  if velocity.y >= 6000 and falling_damage_tick <= 0:
+    health.current_health -= .5
+    falling_damage_tick    = .167
+    if health.current_health <= 0:
+      World.load_this_level()
 
 func _physics_process(delta: float) -> void:
   var dx = Input.get_axis(
@@ -65,6 +78,8 @@ func _physics_process(delta: float) -> void:
       jumps.current_jumps = jumps.maximum_jumps
 
     velocity.y = 0
+
+
 
 
 func throw_apple() -> void:
